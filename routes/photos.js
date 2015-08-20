@@ -28,6 +28,7 @@ exports.submit = function(dir) {
     return function(req, res, next) {
         var img = req.files.photo.image;
         var name = req.body.photo.name || img.name;
+        var hash = req.body.photo.hash;
         var dstPath = join(dir, img.name);
         //rename the file to dstPath by streaming
         var readStream = fs.createReadStream(img.path)
@@ -37,6 +38,7 @@ exports.submit = function(dir) {
             //save photo info to mongoDB
             Photo.create({
                 name: name,
+                hash: hash,
                 path: img.name}, function(err) {
                 if (err) return next(err);
                 res.redirect('/');
@@ -52,10 +54,10 @@ exports.submit = function(dir) {
 
 exports.download = function(dir){
     return function(req, res, next) {
-        var id = req.params.id;
-        Photo.findById(id, function(err, photo) {
+        var hash = req.params.hash;
+        Photo.findbyhash(hash, function(err, photo) {
             if (err) return next(err);
-            var path = join(dir, photo.path);
+            var path = join(dir, photo[0].path);
             res.sendFile(path);
         })
     }
