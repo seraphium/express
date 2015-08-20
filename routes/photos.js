@@ -57,8 +57,18 @@ exports.download = function(dir){
         var hash = req.params.hash;
         Photo.findbyhash(hash, function(err, photo) {
             if (err) return next(err);
-            var path = join(dir, photo[0].path);
-            res.sendFile(path);
+            if (photo.length > 0)
+            {
+                var path = join(dir, photo[0].path);
+                res.sendFile(path);
+            }
+            else
+            {
+                var err = new Error("’’∆¨…–Œ¥ªÒ»°£¨«Î…‘∫Ú‘Ÿ ‘");
+                err.status = 500;
+                next(err);
+            }
+
         })
     }
 }
