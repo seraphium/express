@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * Created by zezhang on 2015/6/11.
  */
 var Photo = require('../models/Photo');
@@ -64,7 +64,7 @@ exports.download = function(dir){
             }
             else
             {
-                var err = new Error("ÕÕÆ¬ÉĞÎ´»ñÈ¡£¬ÇëÉÔºòÔÙÊÔ");
+                var err = new Error("ç…§ç‰‡å°šæœªè·å–ï¼Œè¯·ç¨å€™å†è¯•");
                 err.status = 500;
                 next(err);
             }

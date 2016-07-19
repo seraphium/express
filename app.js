@@ -39,7 +39,7 @@ app.use(function(req, res, next) {
   // * auth array exists
   // * first value matches the expected user
   // * second value the expected password
-  if (!auth || auth[0] !== 'beacon' || auth[1] !== 'bk5000') {
+  if (!auth || auth[0] !== 'beacon' || auth[1] !== 'bc3000') {
     // any of the tests failed
     // send an Basic Auth request (HTTP Code: 401 Unauthorized)
     res.statusCode = 401;
