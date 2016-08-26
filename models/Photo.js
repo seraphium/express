@@ -9,13 +9,14 @@ var schema = new Schema(
     {
         name: String,
         path: String,
-        hash: String
+        hash: String,
+		id: String
     }
 );
 
-schema.static("findbyhash", function(hash, callback) {
+schema.static("findbyhashid", function(hash, id, callback) {
 
-    return this.find({hash: hash}, callback);
+    return this.find({hash: hash, id: id}, callback);
 
 });
 

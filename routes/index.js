@@ -12,5 +12,5 @@ router.get('/upload', photos.form);
 router.post('/upload', multipartMiddleware, photos.submit(app.get('photos')));
 
 /* Get download page */
-router.get('/photo/:hash/download', photos.download(app.get('photos')));
+router.get('/photo/:hash/:id/download', photos.download(app.get('photos')));
 module.exports = router;
