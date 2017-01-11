@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/photo_app');
+mongoose.connect("mongodb://beacon:bc3000@localhost/photo_app?authSource=photo_app");
 
 var schema = new Schema(
     {
