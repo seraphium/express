@@ -29,6 +29,7 @@ exports.submit = function(dir) {
         var img = req.files.photo.image;
         var name = req.body.photo.name || img.name;
         var hash = req.body.photo.hash;
+        var cameraId = req.body.photo.cameraId;
 		var id = req.body.photo.id;
         var dstPath = join(dir, img.name);
         //rename the file to dstPath by streaming
@@ -40,6 +41,7 @@ exports.submit = function(dir) {
             Photo.create({
                 name: name,
                 hash: hash,
+                cameraId: cameraId,
 				id: id,
                 path: img.name}, function(err) {
                 if (err) return next(err);
@@ -57,8 +59,9 @@ exports.submit = function(dir) {
 exports.download = function(dir){
     return function(req, res, next) {
         var hash = req.params.hash;
+        var cameraId = req.params.cameraId;
 		var id = req.params.id;
-        Photo.findbyhashid(hash, id, function(err, photo) {
+        Photo.findbyhashid(hash, cameraId, id, function(err, photo) {
             if (err) return next(err);
             if (photo.length > 0)
             {

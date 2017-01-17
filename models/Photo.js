@@ -10,13 +10,14 @@ var schema = new Schema(
         name: String,
         path: String,
         hash: String,
+        cameraId: String,
 		id: String
     }
 );
 
-schema.static("findbyhashid", function(hash, id, callback) {
+schema.static("findbyhashid", function(hash, cameraId, id, callback) {
 
-    return this.find({hash: hash, id: id}, callback);
+    return this.find({hash: hash, cameraId: cameraId, id: id}, callback);
 
 });
 

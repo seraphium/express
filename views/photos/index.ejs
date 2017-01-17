@@ -12,7 +12,7 @@
 <div id='photos'>
     <% photos.forEach(function(photo) { %>
     <div  class="photo">
-        <a href="/photo/<%=photo.hash%>/<%=photo.id%>/download">
+        <a href="/photo/<%=photo.hash%>/<%=photo.cameraId%>/<%=photo.id%>/download">
         <h2><%=photo.name%></h2>
         <img src='/photos/<%=photo.path%>'/>
         </a>
